@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시력검사 시뮬레이션</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="instructions-screen">
+      <p class="typewriter-text"></p>
+      <img class="btn-start" src="검안 시뮬레이션 이미지/시작버튼.png" alt="시작하기">
+    </div>
+    <div class="hero-image">
+      <img class="img-bi"          src="검안 시뮬레이션 이미지/비.png"     alt="비">
+      <img class="img-nabi"        src="검안 시뮬레이션 이미지/나비.png"    alt="나비">
+      <img class="img-gong"        src="검안 시뮬레이션 이미지/공.png"     alt="공">
+      <img class="img-banc"        src="검안 시뮬레이션 이미지/반C.png"    alt="반C">
+      <img class="img-sik"         src="검안 시뮬레이션 이미지/식.png"     alt="식">
+      <img class="img-bihaenggi"   src="검안 시뮬레이션 이미지/비행기.png"  alt="비행기">
+      <img class="img-c"           src="검안 시뮬레이션 이미지/C.png"      alt="C">
+      <img class="img-ryeok"       src="검안 시뮬레이션 이미지/력.png"     alt="력">
+      <img class="img-geom"        src="검안 시뮬레이션 이미지/검.png"     alt="검">
+      <img class="img-4"           src="검안 시뮬레이션 이미지/4.png"      alt="4">
+      <img class="img-red-line"    src="검안 시뮬레이션 이미지/빨간 선.png" alt="빨간선">
+      <img class="img-1"           src="검안 시뮬레이션 이미지/1.png"      alt="1">
+      <img class="img-ui"          src="검안 시뮬레이션 이미지/위.png"     alt="위">
+      <img class="img-arae"        src="검안 시뮬레이션 이미지/아래.png"   alt="아래">
+      <img class="img-jeom"        src="검안 시뮬레이션 이미지/점.png"     alt="점">
+      <img class="img-yeonggong"   src="검안 시뮬레이션 이미지/영공.png"   alt="영공">
+      <img class="img-ryak"        src="검안 시뮬레이션 이미지/략.png"     alt="략">
+      <img class="img-jip"         src="검안 시뮬레이션 이미지/집.png"     alt="집">
+      <img class="img-green-line"  src="검안 시뮬레이션 이미지/초록 선.png" alt="초록선">
+      <img class="img-small4-left" src="검안 시뮬레이션 이미지/작은 4.png" alt="4">
+      <img class="img-sae-left"    src="검안 시뮬레이션 이미지/새.png"     alt="새">
+      <img class="img-3-left"      src="검안 시뮬레이션 이미지/3.png"      alt="3">
+      <img class="img-smallc"      src="검안 시뮬레이션 이미지/작은 c.png" alt="작은c">
+      <img class="img-smallc2"     src="검안 시뮬레이션 이미지/작은 c.png" alt="작은c2">
+      <img class="img-3-right"     src="검안 시뮬레이션 이미지/3.png"      alt="3">
+      <img class="img-sae-right"   src="검안 시뮬레이션 이미지/새.png"     alt="새">
+      <img class="img-small4-right" src="검안 시뮬레이션 이미지/작은 4.png" alt="4">
+      <img class="btn-enter" src="검안 시뮬레이션 이미지/입장하기.png" alt="입장하기">
+    </div>
+
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" width="0" height="0">
+      <defs>
+        <filter id="q5-astigmatism" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur id="q5BlurEl" in="SourceGraphic" stdDeviation="1 1"/>
+        </filter>
+      </defs>
+    </svg>
+
+    <img id="floatingDolbogi" class="floating-dolbogi" src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+    <img id="floatingAngyeong" class="floating-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png" alt="안경닦기">
+    <img id="floatingGlass" class="floating-glass" src="검안 시뮬레이션 이미지/빨간안경.png" alt="빨간안경">
+    <img id="floatingSunglasses" class="floating-sunglasses" src="검안 시뮬레이션 이미지/썬글라스.png" alt="썬글라스">
+    <img id="q6KidImg" class="q6-kid-img" src="검안 시뮬레이션 이미지/선글라스 착용한 아이.png" alt="선글라스 착용한 아이">
+    <span id="q6BeltText" class="q6-belt-text">잠시 벗기</span>
+
+
+    <div class="q1-screen">
+      <p class="q1-text"><span class="q-num">Q1</span>앞에 보이는 시표에서 레이저로 가르키고 있는 부분의 뚫린 방향을 읽어주세요.</p>
+      <img class="q1-randolf" src="검안 시뮬레이션 이미지/란돌프 고리.png" alt="란돌프 고리">
+      <div class="q1-laser-ghost-circle"></div>
+      <div class="q1-laser-circle">
+        <div class="q1-laser-dot"></div>
+        <div class="q1-laser-trail t1"></div>
+        <div class="q1-laser-trail t2"></div>
+        <div class="q1-laser-trail t3"></div>
+        <div class="q1-laser-trail t4"></div>
+        <div class="q1-laser-trail t5"></div>
+        <div class="q1-laser-trail t6"></div>
+        <div class="q1-laser-trail t7"></div>
+      </div>
+      <div class="q1-drawer" id="q1Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q1-item-dolbogi"  src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-note"     src="검안 시뮬레이션 이미지/쪽지.png"      alt="쪽지">
+      </div>
+      <img class="q1-hint-note" id="q1HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q1AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 종이.png" alt="오지선다종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">상</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">하</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">좌</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">우</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">모르겠다.</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q2-screen" id="q2Screen">
+      <div class="q2-black-overlay" id="q2BlackOverlay"></div>
+      <p class="q1-text"><span class="q-num">Q2</span>양손을 겹쳐 구멍을 만들고 앞에 있는 안경사를 주시한 상태에서 한 눈씩 가렸을 때<br>사라지지 않고 그대로 보이는 눈이 어느 눈인가요?</p>
+      <img class="q2-hand-img" src="검안 시뮬레이션 이미지/주시안 손.png" alt="주시안 손">
+      <img class="q2-cat-img" id="q2CatImg" src="검안 시뮬레이션 이미지/고양이.png" alt="고양이">
+      <div class="q2-eye-wrap q2-eye-left-wrap show-hint">
+        <img class="q2-eye-open" src="검안 시뮬레이션 이미지/뜬 눈.png" alt="뜬 눈">
+        <img class="q2-eye-closed" src="검안 시뮬레이션 이미지/감은 눈.png" alt="감은 눈">
+        <span class="q2-click-text">마우스 클릭</span>
+      </div>
+      <div class="q2-eye-wrap q2-eye-right-wrap">
+        <img class="q2-eye-open" src="검안 시뮬레이션 이미지/뜬 눈_오른쪽.png" alt="뜬 눈 오른쪽">
+        <img class="q2-eye-closed" src="검안 시뮬레이션 이미지/감은 눈_오른쪽.png" alt="감은 눈 오른쪽">
+        <span class="q2-click-text">마우스 클릭</span>
+      </div>
+      <div class="q1-drawer" id="q2Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <span class="q2-drawer-text">텅텅</span>
+      </div>
+      <img class="q1-hint-note" id="q2HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q2AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 종이.png" alt="오지선다종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">왼쪽 눈</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">오른쪽 눈</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">양 눈</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">티 눈</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">마음의 눈</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" id="q2BtnBack" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" id="q2BtnAnswer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q3-screen" id="q3Screen">
+      <!-- 줌 인트로 오버레이 -->
+      <div class="q3-intro-overlay" id="q3IntroOverlay">
+        <div class="q3-intro-wrapper" id="q3IntroWrapper">
+          <img class="q3-intro-device" src="검안 시뮬레이션 이미지/검안기기.png" alt="검안기기">
+        </div>
+      </div>
+      <!-- 문제 내용 -->
+      <p class="q1-text"><span class="q-num">Q3</span>자.. 아래 빨간 집을 응시해주세요. 빨간 집 앞에 뭐가 보일까요?</p>
+      <img class="q3-house-img" src="검안 시뮬레이션 이미지/빨간 집.png" alt="빨간집">
+      <div class="q3-video-wrap" id="q3VideoWrap">
+        <video class="q3-reveal-video" id="q3RevealVideo" autoplay loop muted playsinline>
+          <source src="영상 최종.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="q1-drawer" id="q3Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q1-item-dolbogi"  src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-note"     src="검안 시뮬레이션 이미지/쪽지.png"      alt="쪽지">
+        <div class="drawer-tool-hint" id="q3DrawerHint">서랍을 클릭해 도구를 넣어주세요</div>
+      </div>
+      <img class="q1-hint-note" id="q3HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q3AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 종이.png" alt="오지선다종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">하얀 말</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">손을 흔드는 사람</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">강아지</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">자동차</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">얼룩소</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q4-screen" id="q4Screen">
+      <p class="q1-text"><span class="q-num">Q4</span>정면에 보이는 여러 방향의 선들 중에 어느 선이 더 진하거나 선명히 보이나요?</p>
+      <img class="q4-chart-img" src="검안 시뮬레이션 이미지/방사선 시표.png" alt="방사선 시표">
+      <img id="q4RevealSrc" src="검안 시뮬레이션 이미지/방사선 시표 완전체.png" style="display:none">
+      <canvas class="q4-reveal-canvas" id="q4RevealCanvas"></canvas>
+      <div class="q1-drawer" id="q4Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q1-item-dolbogi"  src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-note"     src="검안 시뮬레이션 이미지/쪽지.png"      alt="쪽지">
+        <div class="drawer-tool-hint" id="q4DrawerHint">서랍을 클릭해 도구를 넣어주세요</div>
+      </div>
+      <img class="q1-hint-note" id="q4HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q4AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 큰 종이.png" alt="오지선다큰종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">1시와 2시 사이가 가장 진하다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">수직 방향의 선이 선명하다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">수평 방향의 선의 농도가 진하다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">모두 균일하다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">모든 선이 무지개색으로 번져서 보인다.</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q5-screen" id="q5Screen">
+      <p class="q1-text"><span class="q-num">Q5</span>지금 보시는 점들이 어떻게 보이시나요?<br>특정 방향으로 번지거나 타원형으로 늘어져 보이시나요?</p>
+      <canvas id="q5BlurCanvas" class="q5-blur-canvas"></canvas>
+      <canvas id="q5ClearCanvas" class="q5-clear-canvas"></canvas>
+      <img id="q5GlassOverlay" class="q5-glass-overlay" src="검안 시뮬레이션 이미지/안경 확대.png" alt="안경 확대">
+      <div class="q1-drawer" id="q5Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q1-item-dolbogi"  src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-note"     src="검안 시뮬레이션 이미지/쪽지.png"      alt="쪽지">
+        <div class="drawer-tool-hint" id="q5DrawerHint">서랍을 클릭해 도구를 넣어주세요</div>
+      </div>
+      <img class="q1-hint-note" id="q5HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q5AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 큰 종이.png" alt="오지선다큰종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">쌀알처럼 길쭉하게 보인다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">점들이 이어져 선으로 보인다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">점들이 각각 완전한 원으로 보인다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">특정방향으로 번져 보인다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">영화 매트릭스의 디지털 코드처럼 쏟아져 내린다.</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q6-trans-screen" id="q6TransScreen">
+      <p class="q6-trans-text">편광필터를 착용하겠습니다.</p>
+      <img id="q6TransFilter" class="q6-trans-filter" src="검안 시뮬레이션 이미지/편광필터.png" alt="편광필터">
+    </div>
+
+    <div class="q6-screen" id="q6Screen">
+      <p class="q1-text"><span class="q-num">Q6</span>앞을 주시해주세요. 빨강색과 초록색 중 어느 배경의 글씨가 더 진하고 선명히 보이나요?</p>
+      <img id="q6TestImg" class="q6-test-img" src="검안 시뮬레이션 이미지/적록시표.png" alt="적록시표">
+      <img id="q6SunglassOverlay" class="q6-sunglass-overlay" src="검안 시뮬레이션 이미지/썬글라스.png" alt="썬글라스 확대">
+      <div class="q1-drawer" id="q6Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q1-item-dolbogi"  src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-sunglass" id="q6SunglassItem" src="검안 시뮬레이션 이미지/썬글라스.png" alt="썬글라스">
+        <div class="drawer-tool-hint" id="q6DrawerHint">서랍을 클릭해 도구를 넣어주세요</div>
+      </div>
+      <img class="q1-hint-note" id="q6HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q6AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 큰 종이.png" alt="오지선다큰종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">빨간색</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">초록색</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">둘 다 흐리다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">둘 다 비슷하다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">색깔 구분이 가지 않는다.</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q7-screen" id="q7Screen">
+      <p class="q1-text"><span class="q-num">Q7</span>가로선과 세로선, 두 개의 선이 모두 보이시나요?<br>가로선과 세로선이 어떻게 보이시나요?</p>
+      <img id="q7CrossImg1" class="q7-cross-img" src="검안 시뮬레이션 이미지/십자 시표 1.png" alt="십자 시표 1">
+      <img id="q7CrossImg2" class="q7-cross-img" src="검안 시뮬레이션 이미지/십자 시표 2.png" alt="십자 시표 2">
+      <div class="q7-eye-wrap q7-eye-left-wrap" id="q7EyeLeft">
+        <img class="q7-eye-open"   src="검안 시뮬레이션 이미지/뜬 눈.png"   alt="뜬 눈">
+        <img class="q7-eye-closed" src="검안 시뮬레이션 이미지/감은 눈.png" alt="감은 눈">
+        <span class="q7-click-text">마우스 클릭</span>
+      </div>
+      <div class="q7-eye-wrap q7-eye-right-wrap" id="q7EyeRight">
+        <img class="q7-eye-open"   src="검안 시뮬레이션 이미지/뜬 눈_오른쪽.png"   alt="뜬 눈 오른쪽">
+        <img class="q7-eye-closed" src="검안 시뮬레이션 이미지/감은 눈_오른쪽.png" alt="감은 눈 오른쪽">
+        <span class="q7-click-text">마우스 클릭</span>
+      </div>
+      <div class="q1-drawer" id="q7Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q1-item-dolbogi"  src="검안 시뮬레이션 이미지/돋보기_1.png" alt="돋보기">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      id="q7EyeItem" src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-note"     src="검안 시뮬레이션 이미지/쪽지.png"      alt="쪽지">
+        <div class="drawer-tool-hint" id="q7DrawerHint">서랍을 클릭해 도구를 넣어주세요</div>
+      </div>
+      <img class="q1-hint-note" id="q7HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q7AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 큰 종이.png" alt="오지선다큰종이">
+        <div class="q1-answer-list">
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">가로선과 세로선이 중앙에서 십자를 이룬다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">가로선과 세로선이 T자를 이룬다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">가로선과 세로선이 멀리 떨어져 있다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">가로선과 세로선이 ㄴ자를 이룬다.</span>
+          </div>
+          <div class="q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span class="q1-answer-label">한쪽 선이 안 보인다.</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+    <div class="q7-trans-screen" id="q7TransScreen">
+      <p class="q6-trans-text">적록필터를 착용하겠습니다.</p>
+      <img id="q7TransFilter" class="q7-trans-filter" src="검안 시뮬레이션 이미지/적록필터.png" alt="적록필터">
+    </div>
+
+    <div class="end-screen" id="endScreen">
+      <p class="end-text">모든 검사가 끝났습니다.</p>
+    </div>
+
+    <div class="result-screen" id="resultScreen">
+      <img class="result-device" src="검안 시뮬레이션 이미지/단말기.png" alt="단말기">
+      <div class="result-receipt-wrap">
+        <img class="result-receipt" src="검안 시뮬레이션 이미지/결과지.png" alt="결과지">
+      </div>
+      <div class="result-slot-shadow"></div>
+      <img class="result-exit-btn" src="검안 시뮬레이션 이미지/나가기.png" alt="나가기" onclick="location.reload()">
+    </div>
+
+    <div class="q8-screen" id="q8Screen">
+      <p class="q1-text"><span class="q-num">Q8</span>앞에 원, 마름모, 십자가 모양의 점들이 보이시나요?<br>점의 갯수가 몇개인지 말해보세요.</p>
+      <div class="q8-freeze-hud" id="q8FreezeHud">
+        <img class="q8-freeze-icon" src="검안 시뮬레이션 이미지/시계.png" alt="시계">
+        <span class="q8-freeze-count" id="q8FreezeCount">5</span>
+      </div>
+      <img id="q8TestImg1" class="q8-test-img" src="검안 시뮬레이션 이미지/적록시표 1.png" alt="적록시표 1">
+      <img id="q8TestImg2" class="q8-test-img" src="검안 시뮬레이션 이미지/적록시표 2.png" alt="적록시표 2">
+      <div class="q1-drawer" id="q8Drawer">
+        <img class="q1-drawer-img" src="검안 시뮬레이션 이미지/서랍.png" alt="서랍">
+        <img class="q8-item-clock" id="q8ClockItem" src="검안 시뮬레이션 이미지/시계.png" alt="시계">
+        <img class="q1-item-angyeong" src="검안 시뮬레이션 이미지/안경닦기.png"  alt="안경닦기">
+        <img class="q1-item-redglass" src="검안 시뮬레이션 이미지/빨간안경.png"  alt="빨간안경">
+        <img class="q1-item-eye"      src="검안 시뮬레이션 이미지/맑은 눈.png"   alt="맑은눈">
+        <img class="q1-item-note"     src="검안 시뮬레이션 이미지/쪽지.png"      alt="쪽지">
+        <div class="drawer-tool-hint" id="q8DrawerHint">서랍을 클릭해 도구를 넣어주세요</div>
+      </div>
+      <img class="q1-hint-note" id="q8HintNote" src="검안 시뮬레이션 이미지/힌트 쪽지 오픈.png" alt="힌트쪽지">
+      <div class="q1-answer-wrap" id="q8AnswerWrap">
+        <img class="q1-answer-paper" src="검안 시뮬레이션 이미지/오지선다 큰 종이.png" alt="오지선다큰종이">
+        <div class="q8-answer-table">
+          <div class="q8-answer-header">
+            <span></span>
+            <span>초록색 점</span>
+            <span>빨간색 점</span>
+            <span>하얀색 점</span>
+          </div>
+          <div class="q8-answer-row q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">1</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span>2개</span><span>0개</span><span>0개</span>
+          </div>
+          <div class="q8-answer-row q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">2</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span>3개</span><span>2개</span><span>0개</span>
+          </div>
+          <div class="q8-answer-row q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">3</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span>0개</span><span>2개</span><span>0개</span>
+          </div>
+          <div class="q8-answer-row q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">4</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span>0개</span><span>0개</span><span>1개</span>
+          </div>
+          <div class="q8-answer-row q1-answer-row">
+            <div class="q1-answer-circle"><span class="q1-answer-num">5</span><img class="q1-check" src="검안 시뮬레이션 이미지/체크표시.png" alt="체크"></div>
+            <span>2개</span><span>1개</span><span>1개</span>
+          </div>
+        </div>
+      </div>
+      <img class="q1-btn-back" src="검안 시뮬레이션 이미지/뒤로가기.png" alt="뒤로가기">
+      <img class="q1-btn-answer" src="검안 시뮬레이션 이미지/대답하기.png" alt="대답하기">
+    </div>
+
+  </div>
+  <script>
+    (function fit() {
+      const c = document.querySelector('.container');
+      const s = Math.min(window.innerWidth / 1440, window.innerHeight / 1024);
+      c.style.transform = `scale(${s})`;
+      c.style.left = ((window.innerWidth  - 1440 * s) / 2) + 'px';
+      c.style.top  = ((window.innerHeight - 1024 * s) / 2) + 'px';
+    })();
+    window.addEventListener('resize', function fit() {
+      const c = document.querySelector('.container');
+      const s = Math.min(window.innerWidth / 1440, window.innerHeight / 1024);
+      c.style.transform = `scale(${s})`;
+      c.style.left = ((window.innerWidth  - 1440 * s) / 2) + 'px';
+      c.style.top  = ((window.innerHeight - 1024 * s) / 2) + 'px';
+    });
+  </script>
+  <script>
+    /* ===== AUDIO SYSTEM ===== */
+    const AC = window.AudioContext || window.webkitAudioContext;
+    let ac = null;
+    function getAC() {
+      if (!ac) ac = new AC();
+      if (ac.state === 'suspended') ac.resume().catch(() => {});
+      return ac;
+    }
+
+    // 형광등 허밍 노드들
+    let _fluorNodes = null;
+
+    function startElectricSign() {
+      if (_fluorNodes) return;
+      const ctx = getAC();
+
+      // 60Hz 전기 기본 허밍 (형광등 특유 낮은 윙)
+      const hum = ctx.createOscillator();
+      hum.type = 'sawtooth';
+      hum.frequency.value = 60;
+
+      // 120Hz 배음 (형광등 밸러스트 소리)
+      const hum2 = ctx.createOscillator();
+      hum2.type = 'square';
+      hum2.frequency.value = 120;
+
+      // 노이즈 레이어 (전기 지직거림)
+      const bufLen = ctx.sampleRate * 2;
+      const noiseBuf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+      const nd = noiseBuf.getChannelData(0);
+      for (let i = 0; i < bufLen; i++) nd[i] = Math.random() * 2 - 1;
+      const noise = ctx.createBufferSource();
+      noise.buffer = noiseBuf;
+      noise.loop = true;
+
+      // 노이즈 필터 (2kHz 대역 - 형광등 지직)
+      const nFilter = ctx.createBiquadFilter();
+      nFilter.type = 'bandpass';
+      nFilter.frequency.value = 2000;
+      nFilter.Q.value = 0.4;
+
+      // 볼륨 LFO로 미세한 깜빡임 효과
+      const lfo = ctx.createOscillator();
+      lfo.type = 'sine';
+      lfo.frequency.value = 0.8 + Math.random() * 0.4;
+      const lfoGain = ctx.createGain();
+      lfoGain.gain.value = 0.012;
+
+      const humGain = ctx.createGain();
+      humGain.gain.value = 0.028;
+
+      const hum2Gain = ctx.createGain();
+      hum2Gain.gain.value = 0.012;
+
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.value = 0.018;
+
+      const masterGain = ctx.createGain();
+      masterGain.gain.value = 1;
+
+      hum.connect(humGain);   humGain.connect(masterGain);
+      hum2.connect(hum2Gain); hum2Gain.connect(masterGain);
+      noise.connect(nFilter); nFilter.connect(noiseGain); noiseGain.connect(masterGain);
+      lfo.connect(lfoGain);   lfoGain.connect(masterGain.gain);
+      masterGain.connect(ctx.destination);
+
+      hum.start(); hum2.start(); noise.start(); lfo.start();
+
+      _fluorNodes = { hum, hum2, noise, lfo, masterGain };
+    }
+
+    function stopElectricSign() {
+      if (!_fluorNodes) return;
+      const ctx = getAC();
+      const { hum, hum2, noise, lfo, masterGain } = _fluorNodes;
+      masterGain.gain.setValueAtTime(masterGain.gain.value, ctx.currentTime);
+      masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      setTimeout(() => { try { hum.stop(); hum2.stop(); noise.stop(); lfo.stop(); } catch(e){} }, 350);
+      _fluorNodes = null;
+    }
+
+    // 입장 벨소리
+    function playEntryBell() {
+      const ctx = getAC();
+      const freqs = [440, 880, 1320, 1760];
+      const gains = [0.09, 0.05, 0.03, 0.015];
+      freqs.forEach((f, i) => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = f;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(gains[i], ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(ctx.currentTime + i * 0.01);
+        osc.stop(ctx.currentTime + 2.6);
+      });
+      // 두 번째 화음 (딸랑 딜레이)
+      setTimeout(() => {
+        [554, 1108].forEach((f, i) => {
+          const ctx2 = getAC();
+          const osc = ctx2.createOscillator();
+          osc.type = 'sine';
+          osc.frequency.value = f;
+          const g = ctx2.createGain();
+          g.gain.setValueAtTime(i === 0 ? 0.05 : 0.025, ctx2.currentTime);
+          g.gain.exponentialRampToValueAtTime(0.001, ctx2.currentTime + 2.0);
+          osc.connect(g); g.connect(ctx2.destination);
+          osc.start(); osc.stop(ctx2.currentTime + 2.1);
+        });
+      }, 220);
+    }
+
+
+    // 기계 찰칵찰칵 소리 (파일)
+    let _clickingAudio = null;
+    function startMechClicking() {
+      if (_clickingAudio) return;
+      _clickingAudio = new Audio('검안 시뮬레이션 이미지/The_clicking_sound_w_%232-1781425273389.mp3');
+      _clickingAudio.volume = 1.0;
+      _clickingAudio.loop = true;
+      _clickingAudio.play().catch(() => {});
+    }
+    function stopMechClicking() {
+      if (_clickingAudio) {
+        _clickingAudio.pause();
+        _clickingAudio.currentTime = 0;
+        _clickingAudio = null;
+      }
+    }
+
+    // 눈 깜박임 소리
+    function playEyeBlink() {
+      const ctx = getAC();
+      // 눈꺼풀 내려오는 부드러운 스윕
+      const bufLen = Math.floor(ctx.sampleRate * 0.1);
+      const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufLen; i++) {
+        const t = i / bufLen;
+        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - t, 1.5) * 0.6;
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const lpf = ctx.createBiquadFilter();
+      lpf.type = 'lowpass';
+      lpf.frequency.value = 1200;
+      const g = ctx.createGain();
+      g.gain.value = 0.06;
+      src.connect(lpf); lpf.connect(g); g.connect(ctx.destination);
+      src.start();
+
+      // 깜박 후 짧은 플러터 (속눈썹 떨림)
+      setTimeout(() => {
+        const buf2 = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.04), ctx.sampleRate);
+        const d2 = buf2.getChannelData(0);
+        for (let i = 0; i < d2.length; i++) {
+          d2[i] = (Math.random() * 2 - 1) * Math.exp(-i / (d2.length * 0.4));
+        }
+        const src2 = ctx.createBufferSource();
+        src2.buffer = buf2;
+        const hpf = ctx.createBiquadFilter();
+        hpf.type = 'highpass';
+        hpf.frequency.value = 2000;
+        const g2 = ctx.createGain();
+        g2.gain.value = 0.04;
+        src2.connect(hpf); hpf.connect(g2); g2.connect(ctx.destination);
+        src2.start();
+      }, 80);
+    }
+
+    // 버튼 클릭음 (부드러운 팝)
+    function playClick(vol = 0.2) {
+      const ctx = getAC();
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(480, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.06);
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(vol, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(); osc.stop(ctx.currentTime + 0.1);
+    }
+
+    // 서랍 열기/닫기 (짧은 슬라이드)
+    function playDrawer() {
+      const ctx = getAC();
+      const buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.15), ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < d.length; i++) {
+        const env = Math.sin((i / d.length) * Math.PI);
+        d[i] = (Math.random() * 2 - 1) * env * 0.5;
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const lpf = ctx.createBiquadFilter();
+      lpf.type = 'lowpass';
+      lpf.frequency.value = 600;
+      const g = ctx.createGain();
+      g.gain.value = 0.15;
+      src.connect(lpf); lpf.connect(g); g.connect(ctx.destination);
+      src.start();
+    }
+
+    // 종이 펼치는 소리 (쪽지 열기)
+    function playPaper() {
+      const ctx = getAC();
+      const dur = 0.38;
+      const bufLen = Math.floor(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufLen; i++) {
+        const t = i / bufLen;
+        // 펼치는 동작: 앞부분 빠른 크링클 후 서서히 안정
+        const env = Math.pow(1 - t, 0.6) * (0.5 + 0.5 * Math.sin(t * Math.PI));
+        d[i] = (Math.random() * 2 - 1) * env;
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const hpf = ctx.createBiquadFilter();
+      hpf.type = 'highpass';
+      hpf.frequency.value = 3500;
+      const lpf = ctx.createBiquadFilter();
+      lpf.type = 'lowpass';
+      lpf.frequency.value = 9000;
+      const g = ctx.createGain();
+      g.gain.value = 0.04;
+      src.connect(hpf); hpf.connect(lpf); lpf.connect(g); g.connect(ctx.destination);
+      src.start();
+    }
+
+    // 도구 선택음 (가벼운 틱)
+    function playPick() {
+      const ctx = getAC();
+      const osc = ctx.createOscillator();
+      osc.type = 'triangle';
+      osc.frequency.value = 900;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0.15, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(); osc.stop(ctx.currentTime + 0.06);
+    }
+
+    // 선지 선택음 (체크 틱)
+    function playCheck() {
+      const ctx = getAC();
+      [600, 900].forEach((f, i) => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = f;
+        const g = ctx.createGain();
+        const t = ctx.currentTime + i * 0.04;
+        g.gain.setValueAtTime(0.12, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.07);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(t); osc.stop(t + 0.08);
+      });
+    }
+
+    // 화면 전환 (짧은 스윕)
+    function playTransition() {
+      const ctx = getAC();
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(200, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.25);
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0.08, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(); osc.stop(ctx.currentTime + 0.35);
+    }
+
+    // 닦는 소리 (파일)
+    let _wipeAudio = null;
+    let _wipeStopTimer = null;
+    function playWipe() {
+      clearTimeout(_wipeStopTimer);
+      if (!_wipeAudio) {
+        _wipeAudio = new Audio('검안 시뮬레이션 이미지/wipe_clean_glassed_w_%233-1781431516639.mp3');
+        _wipeAudio.volume = 0.5;
+        _wipeAudio.loop = true;
+        _wipeAudio.playbackRate = 0.6;
+        _wipeAudio.play().catch(() => {});
+      }
+      _wipeStopTimer = setTimeout(() => {
+        if (_wipeAudio) {
+          _wipeAudio.pause();
+          _wipeAudio.currentTime = 0;
+          _wipeAudio = null;
+        }
+      }, 150);
+    }
+
+    // 타자기 소리 (Web Audio API 루프 — MutationObserver/setTimeout 안에서도 재생됨)
+    let _typeAudioSrc = null;
+    let _typeAudioGain = null;
+    let _typeBuffer = null;
+    fetch('검안 시뮬레이션 이미지/keyboard_typing_soun_%232-1781426347933.mp3')
+      .then(r => r.arrayBuffer())
+      .then(ab => new OfflineAudioContext(2, 44100, 44100).decodeAudioData(ab))
+      .then(buf => { _typeBuffer = buf; })
+      .catch(() => {});
+    function startTypeAudio() {
+      if (_typeAudioSrc || !_typeBuffer) return;
+      const ctx = getAC();
+      _typeAudioGain = ctx.createGain();
+      _typeAudioGain.gain.value = 0.8;
+      _typeAudioGain.connect(ctx.destination);
+      _typeAudioSrc = ctx.createBufferSource();
+      _typeAudioSrc.buffer = _typeBuffer;
+      _typeAudioSrc.loop = true;
+      _typeAudioSrc.connect(_typeAudioGain);
+      _typeAudioSrc.start();
+    }
+    function stopTypeAudio() {
+      if (_typeAudioSrc) {
+        try { _typeAudioSrc.stop(); } catch(e) {}
+        _typeAudioSrc = null;
+        _typeAudioGain = null;
+      }
+    }
+
+    // 프린터 소리 (결과지) — Web Audio API 방식 (autoplay 정책 우회)
+    let _printerAudio = null;
+    let _printerBuffer = null;
+    fetch('검안 시뮬레이션 이미지/Receipt_printing_sou_%234-1781433961716.mp3')
+      .then(r => r.arrayBuffer())
+      .then(ab => new OfflineAudioContext(2, 44100, 44100).decodeAudioData(ab))
+      .then(buf => { _printerBuffer = buf; })
+      .catch(() => {});
+    function startPrinter() {
+      if (!_printerBuffer) return;
+      const ctx = getAC();
+      const src = ctx.createBufferSource();
+      src.buffer = _printerBuffer;
+      const g = ctx.createGain();
+      g.gain.value = 0.4;
+      src.connect(g);
+      g.connect(ctx.destination);
+      src.start();
+      _printerAudio = src;
+    }
+    function stopPrinter() {
+      if (_printerAudio) {
+        try { _printerAudio.stop(); } catch(e) {}
+        _printerAudio = null;
+      }
+    }
+    /* ===== END AUDIO ===== */
+
+    const heroImage = document.querySelector('.hero-image');
+    let clickCount = 0;
+    let isFalling = false;
+    let selectedImgs = [];
+
+    heroImage.addEventListener('click', () => {
+      if (isFalling) return;
+      startElectricSign();
+
+      clickCount++;
+      const fixedCls = ['img-red-line', 'img-green-line', 'btn-enter'];
+      const noFallCls = ['img-bi', 'img-gong', 'img-sik', 'img-c', 'img-ryeok', 'img-geom', 'img-4'];
+      const allImgs = [...document.querySelectorAll('.hero-image img')].filter(
+        img => !fixedCls.some(cls => img.classList.contains(cls))
+      );
+      const fallingImgs = allImgs.filter(img => !noFallCls.some(cls => img.classList.contains(cls)));
+
+      if (clickCount === 1) {
+        const shuffled = [...allImgs].sort(() => Math.random() - 0.5);
+        selectedImgs = shuffled.slice(0, Math.ceil(allImgs.length * 0.5));
+        selectedImgs.forEach((img, i) => {
+          img.style.animationDelay = (i * 0.06) + 's';
+          img.classList.remove('shaking', 'falling');
+          img.classList.add('hanging');
+        });
+      } else if (clickCount === 2) {
+        selectedImgs.forEach((img) => {
+          img.classList.remove('hanging');
+          void img.offsetWidth;
+          img.style.animationDelay = (Math.random() * 0.1) + 's';
+          img.classList.add('hanging');
+        });
+      } else {
+        isFalling = true;
+        allImgs.forEach(img => {
+          img.classList.remove('hanging', 'shaking');
+          img.style.animationDelay = '';
+        });
+        fallingImgs.forEach((img) => {
+          const rotate = (Math.random() * 30 - 15) + 'deg';
+          img.style.setProperty('--fall-rotate', rotate);
+          img.style.animationDelay = (Math.random() * 0.35) + 's';
+          img.classList.add('falling');
+        });
+
+        setTimeout(() => {
+          document.querySelector('.btn-enter').classList.add('visible');
+        }, 1600);
+      }
+    });
+
+    document.querySelector('.btn-enter').addEventListener('click', () => {
+      stopElectricSign();
+      playEntryBell();
+      document.querySelector('.btn-enter').classList.remove('visible');
+      document.querySelectorAll('.hero-image img').forEach(img => {
+        img.style.transition = 'opacity 0.6s ease';
+        img.style.opacity = '0';
+      });
+      document.querySelector('.instructions-screen').classList.add('active');
+      startTypewriter();
+    });
+
+    function startTypewriter() {
+      const el = document.querySelector('.typewriter-text');
+      const btn = document.querySelector('.btn-start');
+      const lines = [
+        '지금부터 비공식 시력검사가 시작됩니다.',
+        '화면에 배치된 시표를 보고\n검사자의 질문에 알맞는 답을 선택하세요.',
+        '어렵다면 서랍 속 도구를 활용해\n문제의 힌트를 찾아보세요.',
+        '대답하기 버튼을 눌러 오지선다 중\n정답을 체크하세요.'
+      ];
+      let lineIdx = 0;
+
+      function typeText(text, onDone) {
+        let i = 0;
+        el.innerHTML = '';
+        startTypeAudio();
+        const timer = setInterval(() => {
+          i++;
+          el.innerHTML = text.slice(0, i).replace(/\n/g, '<br>');
+          if (i >= text.length) {
+            clearInterval(timer);
+            stopTypeAudio();
+            if (onDone) setTimeout(onDone, 1800);
+          }
+        }, 50);
+      }
+
+      function eraseText(text, onDone) {
+        let len = text.length;
+        const timer = setInterval(() => {
+          len--;
+          el.innerHTML = text.slice(0, len).replace(/\n/g, '<br>');
+          if (len <= 0) {
+            clearInterval(timer);
+            if (onDone) setTimeout(onDone, 400);
+          }
+        }, 35);
+      }
+
+      function nextLine() {
+        if (lineIdx < lines.length - 1) {
+          typeText(lines[lineIdx], () => {
+            eraseText(lines[lineIdx], () => {
+              lineIdx++;
+              nextLine();
+            });
+          });
+        } else {
+          typeText(lines[lineIdx], () => {
+            el.classList.add('cursor-hidden');
+            btn.classList.add('visible');
+          });
+        }
+      }
+
+      setTimeout(nextLine, 1200);
+    }
+
+    function initQScreen(screenEl, nextScreenEl, prevScreenEl) {
+      const drawer    = screenEl.querySelector('.q1-drawer');
+      const btnAnswer = screenEl.querySelector('.q1-btn-answer');
+      const answerWrap = screenEl.querySelector('.q1-answer-wrap');
+      const noteItem  = screenEl.querySelector('.q1-item-note');
+      const hintNote  = screenEl.querySelector('.q1-hint-note');
+      let answered = false;
+
+      drawer.addEventListener('click', () => { playDrawer(); drawer.classList.toggle('open'); });
+
+      if (noteItem) {
+        noteItem.addEventListener('click', (e) => {
+          e.stopPropagation();
+          playPaper();
+          hintNote.classList.toggle('visible');
+        });
+      }
+
+      screenEl.querySelectorAll('.q1-answer-row').forEach(row => {
+        row.addEventListener('click', () => {
+          screenEl.querySelectorAll('.q1-answer-row').forEach(r => r.classList.remove('selected'));
+          row.classList.add('selected');
+          answered = true;
+          playCheck();
+          btnAnswer.src = '검안 시뮬레이션 이미지/다음으로.png';
+          btnAnswer.classList.add('pulse');
+        });
+      });
+
+      btnAnswer.addEventListener('click', () => {
+        if (answered) {
+          playTransition();
+          if (nextScreenEl) {
+            screenEl.classList.remove('active');
+            nextScreenEl.classList.add('active');
+          }
+          screenEl.querySelectorAll('.q1-answer-row').forEach(r => r.classList.remove('selected'));
+          answerWrap.classList.remove('visible');
+          btnAnswer.src = '검안 시뮬레이션 이미지/대답하기.png';
+          btnAnswer.classList.remove('pulse');
+          drawer.classList.remove('open');
+          hintNote.classList.remove('visible');
+          answered = false;
+        } else {
+          playClick();
+          answerWrap.classList.toggle('visible');
+          drawer.classList.remove('open');
+        }
+      });
+
+      const btnBack = screenEl.querySelector('.q1-btn-back');
+      if (btnBack && prevScreenEl) {
+        btnBack.addEventListener('click', () => {
+          playClick();
+          screenEl.classList.remove('active');
+          prevScreenEl.classList.add('active');
+        });
+      }
+    }
+
+    initQScreen(document.querySelector('.q1-screen'), document.getElementById('q2Screen'), null);
+    initQScreen(document.getElementById('q2Screen'), document.getElementById('q3Screen'), document.querySelector('.q1-screen'));
+    initQScreen(document.getElementById('q3Screen'), document.getElementById('q4Screen'), document.getElementById('q2Screen'));
+    initQScreen(document.getElementById('q4Screen'), document.getElementById('q5Screen'), document.getElementById('q3Screen'));
+    initQScreen(document.getElementById('q5Screen'), document.getElementById('q6Screen'), document.getElementById('q4Screen'));
+    initQScreen(document.getElementById('q6Screen'), document.getElementById('q6TransScreen'), document.getElementById('q5Screen'));
+    initQScreen(document.getElementById('q7Screen'), document.getElementById('q7TransScreen'), document.getElementById('q6Screen'));
+    initQScreen(document.getElementById('q8Screen'), document.getElementById('endScreen'), document.getElementById('q7Screen'));
+
+
+    const q6TransScreen = document.getElementById('q6TransScreen');
+    const q6TransFilter = document.getElementById('q6TransFilter');
+
+    new MutationObserver(() => {
+      if (q6TransScreen.classList.contains('active')) {
+        q6TransFilter.classList.remove('animating');
+        void q6TransFilter.offsetWidth;
+        setTimeout(() => {
+          q6TransFilter.classList.add('animating');
+          q6TransFilter.addEventListener('animationend', () => {
+            q6TransScreen.classList.remove('active');
+            const q7Screen = document.getElementById('q7Screen');
+            if (q7Screen) q7Screen.classList.add('active');
+          }, { once: true });
+        }, 400);
+      }
+    }).observe(q6TransScreen, { attributes: true, attributeFilter: ['class'] });
+
+    const q7TransScreen = document.getElementById('q7TransScreen');
+    const q7TransFilter = document.getElementById('q7TransFilter');
+
+    new MutationObserver(() => {
+      if (q7TransScreen.classList.contains('active')) {
+        q7TransFilter.classList.remove('animating');
+        void q7TransFilter.offsetWidth;
+        setTimeout(() => {
+          q7TransFilter.classList.add('animating');
+          q7TransFilter.addEventListener('animationend', () => {
+            q7TransScreen.classList.remove('active');
+            const q8Screen = document.getElementById('q8Screen');
+            if (q8Screen) q8Screen.classList.add('active');
+          }, { once: true });
+        }, 400);
+      }
+    }).observe(q7TransScreen, { attributes: true, attributeFilter: ['class'] });
+
+    new MutationObserver(() => {
+      const endScreen = document.getElementById('endScreen');
+      if (endScreen.classList.contains('active')) {
+        const endEl = endScreen.querySelector('.end-text');
+
+        function endTypeText(text, onDone) {
+          let i = 0;
+          endEl.textContent = '';
+          startTypeAudio();
+          const t = setInterval(() => {
+            i++;
+            endEl.textContent = text.slice(0, i);
+            if (i >= text.length) {
+              clearInterval(t);
+              stopTypeAudio();
+              if (onDone) setTimeout(onDone, 1800);
+            }
+          }, 50);
+        }
+
+        function endEraseText(text, onDone) {
+          let len = text.length;
+          const t = setInterval(() => {
+            len--;
+            endEl.textContent = text.slice(0, len);
+            if (len <= 0) { clearInterval(t); if (onDone) setTimeout(onDone, 400); }
+          }, 35);
+        }
+
+        const line1 = '모든 검사가 끝났습니다.';
+        const line2 = '결과를 분석하고 있습니다\n잠시만 기다려 주세요.';
+
+        endTypeText(line1, () => {
+          endEraseText(line1, () => {
+            endTypeText(line2, () => {
+              setTimeout(() => {
+                endScreen.classList.remove('active');
+                document.getElementById('resultScreen').classList.add('active');
+                setTimeout(() => startPrinter(), 800);
+              }, 1000);
+            });
+          });
+        });
+      }
+    }).observe(document.getElementById('endScreen'), { attributes: true, attributeFilter: ['class'] });
+
+    const q3Screen       = document.getElementById('q3Screen');
+    const q3IntroOverlay = document.getElementById('q3IntroOverlay');
+    const q3IntroWrapper = document.getElementById('q3IntroWrapper');
+
+    new MutationObserver(() => {
+      if (q3Screen.classList.contains('active')) {
+        q3IntroOverlay.classList.remove('hidden');
+        q3IntroWrapper.classList.remove('zooming');
+        void q3IntroWrapper.offsetWidth;
+        setTimeout(() => {
+          q3IntroWrapper.classList.add('zooming');
+          setTimeout(() => {
+            q3IntroOverlay.classList.add('hidden');
+            startMechClicking(3000);
+          }, 3500);
+        }, 400);
+      }
+    }).observe(q3Screen, { attributes: true, attributeFilter: ['class'] });
+
+    new MutationObserver(() => {
+      if (!q3Screen.classList.contains('active')) stopMechClicking();
+    }).observe(q3Screen, { attributes: true, attributeFilter: ['class'] });
+
+    const eyeWraps = document.querySelectorAll('.q2-eye-wrap');
+    const q2BlackOverlay = document.getElementById('q2BlackOverlay');
+    const eyeLeftWrap  = document.querySelector('.q2-eye-left-wrap');
+    const eyeRightWrap = document.querySelector('.q2-eye-right-wrap');
+    const q2CatImg     = document.getElementById('q2CatImg');
+
+    function updateQ2State() {
+      const allWraps = [...eyeWraps];
+      const openWraps = allWraps.filter(w => !w.classList.contains('closed'));
+
+      allWraps.forEach(w => w.classList.remove('show-hint'));
+      if (openWraps.length === 1) {
+        openWraps[0].classList.add('show-hint');
+      } else if (openWraps.length === 2) {
+        eyeLeftWrap.classList.add('show-hint');
+      }
+
+      const allClosed = openWraps.length === 0;
+      q2BlackOverlay.classList.toggle('visible', allClosed);
+
+      const rightOnly = !eyeRightWrap.classList.contains('closed') && eyeLeftWrap.classList.contains('closed');
+      const leftOnly  = !eyeLeftWrap.classList.contains('closed') && eyeRightWrap.classList.contains('closed');
+
+      q2CatImg.classList.toggle('right-active', rightOnly);
+      q2CatImg.classList.toggle('left-active',  leftOnly);
+      q2CatImg.style.opacity = (rightOnly || leftOnly) ? '1' : '0';
+    }
+
+    eyeWraps.forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        if (wrap.classList.contains('closed')) return;
+        playEyeBlink();
+        wrap.classList.add('closed');
+        eyeWraps.forEach(w => { if (w !== wrap) w.classList.remove('closed'); });
+        updateQ2State();
+      });
+    });
+
+    const floatingDolbogi = document.getElementById('floatingDolbogi');
+    const containerEl = document.querySelector('.container');
+
+    const q3DolbogItem  = document.querySelector('#q3Drawer .q1-item-dolbogi');
+    const q3VideoWrap   = document.getElementById('q3VideoWrap');
+    const q3Drawer      = document.getElementById('q3Drawer');
+    const q3DrawerHint  = document.getElementById('q3DrawerHint');
+
+    function hideDolbogi() {
+      floatingDolbogi.style.display = 'none';
+      q3VideoWrap.style.display = 'none';
+      q3VideoWrap.style.clipPath = '';
+      q3DolbogItem.style.visibility = 'visible';
+      q3DrawerHint.classList.remove('visible');
+    }
+
+    q3DolbogItem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      q3DolbogItem.style.visibility = 'hidden';
+      q3DolbogItem.closest('.q1-drawer').classList.remove('open');
+      const r3 = containerEl.getBoundingClientRect();
+      const s3 = r3.width / 1440;
+      floatingDolbogi.style.left = ((e.clientX - r3.left) / s3) + 'px';
+      floatingDolbogi.style.top  = ((e.clientY - r3.top)  / s3) + 'px';
+      floatingDolbogi.style.display = 'block';
+      q3VideoWrap.style.display = 'block';
+      q3VideoWrap.style.clipPath = 'circle(0px at 0px 0px)';
+      q3DrawerHint.classList.add('visible');
+    });
+
+    q3Drawer.addEventListener('click', () => {
+      if (floatingDolbogi.style.display === 'block') { hideDolbogi(); q3Drawer.classList.remove('open'); }
+    });
+
+    const floatingAngyeong  = document.getElementById('floatingAngyeong');
+    const q4AngyeongItem    = document.querySelector('#q4Drawer .q1-item-angyeong');
+    const q4Drawer          = document.getElementById('q4Drawer');
+    const q4DrawerHint      = document.getElementById('q4DrawerHint');
+    let angyeongPrevX = null, angyeongPrevY = null;
+    const q4RevealCanvas = document.getElementById('q4RevealCanvas');
+    const q4RevealSrc    = document.getElementById('q4RevealSrc');
+    const q4Ctx          = q4RevealCanvas.getContext('2d');
+    q4RevealCanvas.width  = 600;
+    q4RevealCanvas.height = 600;
+
+    q4AngyeongItem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      q4AngyeongItem.style.visibility = 'hidden';
+      q4Drawer.classList.remove('open');
+      const r4 = containerEl.getBoundingClientRect();
+      const s4 = r4.width / 1440;
+      floatingAngyeong.style.left = ((e.clientX - r4.left) / s4) + 'px';
+      floatingAngyeong.style.top  = ((e.clientY - r4.top)  / s4) + 'px';
+      floatingAngyeong.style.display = 'block';
+      q4DrawerHint.classList.add('visible');
+    });
+
+    q4Drawer.addEventListener('click', () => {
+      if (floatingAngyeong.style.display === 'block') {
+        floatingAngyeong.style.display = 'none';
+        q4AngyeongItem.style.visibility = 'visible';
+        q4DrawerHint.classList.remove('visible');
+        q4Ctx.clearRect(0, 0, q4RevealCanvas.width, q4RevealCanvas.height);
+        q4Drawer.classList.remove('open');
+      }
+    });
+
+    const q5Drawer       = document.getElementById('q5Drawer');
+    const q5GlassOverlay = document.getElementById('q5GlassOverlay');
+    const q5ClearCanvas  = document.getElementById('q5ClearCanvas');
+    const q5RedGlassItem = document.querySelector('#q5Drawer .q1-item-redglass');
+    const q5DrawerHint   = document.getElementById('q5DrawerHint');
+    const floatingGlass  = document.getElementById('floatingGlass');
+    let q5IsCorrect = false;
+
+    // 선명 캔버스 준비
+    (function() {
+      q5ClearCanvas.width  = 480;
+      q5ClearCanvas.height = 554;
+      const ctx = q5ClearCanvas.getContext('2d');
+      const img = new Image();
+      img.src = '검안 시뮬레이션 이미지/점군 시표.png';
+      img.addEventListener('load', () => ctx.drawImage(img, 0, 0, 480, 554));
+    })();
+
+    q5RedGlassItem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      q5RedGlassItem.style.visibility = 'hidden';
+      q5Drawer.classList.remove('open');
+      q5DrawerHint.classList.add('visible');
+
+      // 커서 추종 안경 표시
+      const r5 = containerEl.getBoundingClientRect();
+      const s5 = r5.width / 1440;
+      floatingGlass.style.left = ((e.clientX - r5.left) / s5) + 'px';
+      floatingGlass.style.top  = ((e.clientY - r5.top)  / s5) + 'px';
+      floatingGlass.style.display = 'block';
+
+      // 선명 캔버스 초기화
+      q5ClearCanvas.classList.remove('revealed', 'revealing');
+      void q5ClearCanvas.offsetWidth;
+
+      // 안경 접근 + 렌즈 선명화 동시 시작
+      q5GlassOverlay.style.display = '';
+      q5GlassOverlay.classList.remove('approaching');
+      void q5GlassOverlay.offsetWidth;
+      q5GlassOverlay.classList.add('approaching');
+      q5ClearCanvas.classList.add('revealing');
+
+      q5GlassOverlay.addEventListener('animationend', () => {
+        q5GlassOverlay.classList.remove('approaching');
+        q5ClearCanvas.classList.remove('revealing');
+        q5ClearCanvas.classList.add('revealed');
+        q5IsCorrect = true;
+      }, { once: true });
+    });
+
+    q5Drawer.addEventListener('click', () => {
+      if (floatingGlass.style.display === 'block') {
+        floatingGlass.style.display = 'none';
+        q5RedGlassItem.style.visibility = 'visible';
+        q5DrawerHint.classList.remove('visible');
+        q5GlassOverlay.classList.remove('approaching');
+        q5ClearCanvas.classList.remove('revealed', 'revealing');
+        q5IsCorrect = false;
+        q5Drawer.classList.remove('open');
+      }
+    });
+
+    containerEl.addEventListener('mousemove', (e) => {
+      const rect = containerEl.getBoundingClientRect();
+      const scale = rect.width / 1440;
+      const x = (e.clientX - rect.left) / scale;
+      const y = (e.clientY - rect.top) / scale;
+
+      if (floatingDolbogi.style.display === 'block') {
+        floatingDolbogi.style.left = x + 'px';
+        floatingDolbogi.style.top  = y + 'px';
+        const lx = x - 483.5;
+        const ly = y - 289.5;
+        q3VideoWrap.style.clipPath = `circle(111px at ${lx}px ${ly}px)`;
+      }
+
+      if (floatingAngyeong.style.display === 'block') {
+        floatingAngyeong.style.left = x + 'px';
+        floatingAngyeong.style.top  = y + 'px';
+        if (angyeongPrevX !== null) {
+          const dx = x - angyeongPrevX;
+          const dy = y - angyeongPrevY;
+          if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+            floatingAngyeong.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+            playWipe();
+          }
+        }
+        angyeongPrevX = x;
+        angyeongPrevY = y;
+        const rx = x - 420;
+        const ry = y - 242;
+        q4Ctx.save();
+        q4Ctx.beginPath();
+        q4Ctx.arc(rx, ry, 80, 0, Math.PI * 2);
+        q4Ctx.clip();
+        q4Ctx.drawImage(q4RevealSrc, 0, 0, 600, 600);
+        q4Ctx.restore();
+      }
+
+      if (floatingGlass.style.display === 'block') {
+        floatingGlass.style.left = x + 'px';
+        floatingGlass.style.top  = y + 'px';
+      }
+
+      if (floatingSunglasses.style.display === 'block') {
+        floatingSunglasses.style.left = x + 'px';
+        floatingSunglasses.style.top  = y + 'px';
+      }
+    });
+
+    function emphasizeHint(hintEl) {
+      hintEl.classList.remove('emphasized');
+      void hintEl.offsetWidth;
+      hintEl.classList.add('emphasized');
+      hintEl.addEventListener('animationend', () => hintEl.classList.remove('emphasized'), { once: true });
+    }
+
+    document.querySelector('#q3Screen .q1-btn-answer').addEventListener('click', () => {
+      if (floatingDolbogi.style.display === 'block') {
+        document.getElementById('q3AnswerWrap').classList.remove('visible');
+        emphasizeHint(q3DrawerHint);
+      }
+    });
+
+    document.querySelector('#q4Screen .q1-btn-answer').addEventListener('click', () => {
+      if (floatingAngyeong.style.display === 'block') {
+        document.getElementById('q4AnswerWrap').classList.remove('visible');
+        emphasizeHint(q4DrawerHint);
+      }
+    });
+
+    document.querySelector('#q5Screen .q1-btn-answer').addEventListener('click', () => {
+      if (floatingGlass.style.display === 'block') {
+        document.getElementById('q5AnswerWrap').classList.remove('visible');
+        emphasizeHint(q5DrawerHint);
+      }
+    });
+
+    const q6Drawer           = document.getElementById('q6Drawer');
+    const q6SunglassItem     = document.getElementById('q6SunglassItem');
+    const q6SunglassOverlay  = document.getElementById('q6SunglassOverlay');
+    const q6TestImg          = document.getElementById('q6TestImg');
+    const q6DrawerHint       = document.getElementById('q6DrawerHint');
+    const q6Screen           = document.getElementById('q6Screen');
+    const q6KidImg           = document.getElementById('q6KidImg');
+    const q6BeltText         = document.getElementById('q6BeltText');
+    const floatingSunglasses = document.getElementById('floatingSunglasses');
+
+    let q6SunglassActive = false;
+
+    q6SunglassItem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      q6SunglassItem.style.visibility = 'hidden';
+      q6Drawer.classList.remove('open');
+      q6DrawerHint.classList.add('visible');
+      q6SunglassActive = true;
+
+      q6SunglassOverlay.style.display = '';
+      q6SunglassOverlay.classList.remove('approaching');
+      void q6SunglassOverlay.offsetWidth;
+      q6SunglassOverlay.classList.add('approaching');
+
+      q6SunglassOverlay.addEventListener('animationend', () => {
+        q6SunglassOverlay.classList.remove('approaching');
+        q6TestImg.src = '검안 시뮬레이션 이미지/적록시표 회색.png';
+        q6Screen.classList.add('grayscale');
+        q6KidImg.style.display = 'block';
+        q6BeltText.style.display = 'block';
+      }, { once: true });
+    });
+
+    q6Drawer.addEventListener('click', () => {
+      if (q6SunglassActive) {
+        q6SunglassActive = false;
+        q6SunglassItem.style.visibility = 'visible';
+        q6DrawerHint.classList.remove('visible');
+        q6SunglassOverlay.classList.remove('approaching');
+        q6TestImg.src = '검안 시뮬레이션 이미지/적록시표.png';
+        q6Screen.classList.remove('grayscale');
+        q6KidImg.style.display = 'none';
+        q6BeltText.style.display = 'none';
+        q6KidImg.src = '검안 시뮬레이션 이미지/선글라스 착용한 아이.png';
+        q6BeltText.textContent = '잠시 벗기';
+        q6GlassesOn = true;
+        q6Drawer.classList.remove('open');
+      }
+    });
+
+    let q6GlassesOn = true;
+    q6KidImg.addEventListener('click', () => {
+      if (q6GlassesOn) {
+        q6KidImg.src = '검안 시뮬레이션 이미지/선글라스 착용한 아이_1.png';
+        q6BeltText.textContent = '다시 쓰기';
+        q6TestImg.src = '검안 시뮬레이션 이미지/적록시표.png';
+        q6Screen.classList.remove('grayscale');
+      } else {
+        q6KidImg.src = '검안 시뮬레이션 이미지/선글라스 착용한 아이.png';
+        q6BeltText.textContent = '잠시 벗기';
+        q6TestImg.src = '검안 시뮬레이션 이미지/적록시표 회색.png';
+        q6Screen.classList.add('grayscale');
+      }
+      q6GlassesOn = !q6GlassesOn;
+    });
+
+    document.querySelector('#q6Screen .q1-btn-answer').addEventListener('click', () => {
+      if (q6SunglassActive) {
+        document.getElementById('q6AnswerWrap').classList.remove('visible');
+        emphasizeHint(q6DrawerHint);
+      }
+    });
+
+    // Q7 눈 도구
+    const q7EyeItem   = document.getElementById('q7EyeItem');
+    const q7EyeLeft   = document.getElementById('q7EyeLeft');
+    const q7EyeRight  = document.getElementById('q7EyeRight');
+    const q7Drawer    = document.getElementById('q7Drawer');
+    const q7DrawerHint = document.getElementById('q7DrawerHint');
+    const q7EyeWraps  = [q7EyeLeft, q7EyeRight];
+
+    q7EyeItem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      q7EyeItem.style.visibility = 'hidden';
+      q7Drawer.classList.remove('open');
+      q7DrawerHint.classList.add('visible');
+      q7EyeLeft.classList.add('visible', 'show-hint');
+      q7EyeRight.classList.add('visible');
+    });
+
+    const q7CrossImg1 = document.getElementById('q7CrossImg1');
+    const q7CrossImg2 = document.getElementById('q7CrossImg2');
+
+    function q7ResetCrossImages() {
+      q7CrossImg1.style.opacity = '';
+      q7CrossImg1.style.animation = '';
+      q7CrossImg1.style.transform = '';
+      q7CrossImg2.style.opacity = '';
+      q7CrossImg2.style.animation = '';
+      q7CrossImg2.style.transform = '';
+    }
+
+    q7EyeWraps.forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        if (wrap.classList.contains('closed')) return;
+        playEyeBlink();
+        wrap.classList.remove('show-hint');
+        wrap.classList.add('closed');
+        q7EyeWraps.forEach(w => {
+          if (w !== wrap) {
+            w.classList.remove('closed');
+            w.classList.add('show-hint');
+          }
+        });
+
+        if (wrap === q7EyeLeft) {
+          // 왼쪽 눈 감기 → 가로선(img1)만 정지 상태로 표시
+          q7CrossImg1.style.animation = 'none';
+          q7CrossImg1.style.transform = 'translate(-50%, -50%)';
+          q7CrossImg1.style.opacity = '1';
+          q7CrossImg2.style.animation = 'none';
+          q7CrossImg2.style.opacity = '0';
+        } else {
+          // 오른쪽 눈 감기 → 세로선(img2)만 정지 상태로 표시
+          q7CrossImg2.style.animation = 'none';
+          q7CrossImg2.style.transform = 'translate(-50%, -50%)';
+          q7CrossImg2.style.opacity = '1';
+          q7CrossImg1.style.opacity = '0';
+        }
+      });
+    });
+
+    q7Drawer.addEventListener('click', () => {
+      if (!q7EyeLeft.classList.contains('visible')) return;
+      q7EyeLeft.classList.remove('visible', 'show-hint', 'closed');
+      q7EyeRight.classList.remove('visible', 'show-hint', 'closed');
+      q7EyeItem.style.visibility = 'visible';
+      q7DrawerHint.classList.remove('visible');
+      q7ResetCrossImages();
+    });
+
+    // Q8 시계 도구
+    const q8ClockItem  = document.getElementById('q8ClockItem');
+    const q8DrawerEl   = document.getElementById('q8Drawer');
+    const q8DrawerHint = document.getElementById('q8DrawerHint');
+    const q8Img1       = document.getElementById('q8TestImg1');
+    const q8Img2       = document.getElementById('q8TestImg2');
+    const q8FreezeHud   = document.getElementById('q8FreezeHud');
+    const q8FreezeCount = document.getElementById('q8FreezeCount');
+    const q8FreezeIcon  = q8FreezeHud.querySelector('.q8-freeze-icon');
+    let q8ClockActive  = false;
+    let q8CountdownTimer = null;
+
+    function q8ResumeAnimation() {
+      q8ClockActive = false;
+      q8ClockItem.style.visibility = 'visible';
+      q8DrawerHint.classList.remove('visible');
+      q8FreezeHud.classList.remove('visible');
+      q8Img1.style.animation = '';
+      q8Img1.style.transform = '';
+      q8Img1.style.opacity = '';
+      q8Img2.style.animation = '';
+      q8Img2.style.opacity = '';
+    }
+
+    q8ClockItem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (q8ClockActive) return;
+      q8ClockActive = true;
+      q8ClockItem.style.visibility = 'hidden';
+      q8DrawerEl.classList.remove('open');
+      q8DrawerHint.classList.add('visible');
+      q8Img1.style.animation = 'none';
+      q8Img1.style.transform = 'translate(-50%, -50%)';
+      q8Img1.style.opacity = '1';
+      q8Img2.style.animation = 'none';
+      q8Img2.style.opacity = '1';
+
+      let _tickPhase = 1;
+      function playTick(isTick) {
+        const ctx = getAC();
+        const now = ctx.currentTime;
+        const freq = isTick ? 1800 : 1200;
+        const osc = ctx.createOscillator();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.5, now + 0.018);
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.22, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.022);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(now); osc.stop(now + 0.025);
+      }
+      const tickTockTimer = setInterval(() => {
+        playTick(_tickPhase % 2 === 0);
+        _tickPhase++;
+        if (_tickPhase >= 6) clearInterval(tickTockTimer);
+      }, 500);
+      playTick(true);
+
+      let count = 3;
+      q8FreezeCount.textContent = count;
+      q8FreezeHud.classList.add('visible');
+      function triggerPulse() {
+        q8FreezeIcon.classList.remove('pulse');
+        void q8FreezeIcon.offsetWidth;
+        q8FreezeIcon.classList.add('pulse');
+      }
+      triggerPulse();
+      q8CountdownTimer = setInterval(() => {
+        count--;
+        q8FreezeCount.textContent = count;
+        if (count <= 0) {
+          clearInterval(q8CountdownTimer);
+          clearInterval(tickTockTimer);
+          q8ResumeAnimation();
+        } else {
+          triggerPulse();
+        }
+      }, 1000);
+    });
+
+    q8DrawerEl.addEventListener('click', () => {
+      if (!q8ClockActive) return;
+      clearInterval(q8CountdownTimer);
+      q8ResumeAnimation();
+    });
+
+
+    document.querySelector('.btn-start').addEventListener('click', () => {
+      playTransition();
+      document.querySelector('.instructions-screen').classList.remove('active');
+      document.querySelector('.q1-screen').classList.add('active');
+    });
+
+    // Q5 astigmatism animation (45-degree diagonal canvas blur)
+    (function() {
+      const canvas = document.getElementById('q5BlurCanvas');
+      if (!canvas) return;
+      canvas.width = 480;
+      canvas.height = 554;
+      const ctx = canvas.getContext('2d');
+
+      const img = new Image();
+      img.src = '검안 시뮬레이션 이미지/점군 시표.png';
+
+      let start = null;
+      const dur = 7000;
+      const steps = 14;
+      const maxStrength = 20;
+
+      function draw(ts) {
+        if (q5IsCorrect) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          requestAnimationFrame(draw);
+          return;
+        }
+
+        if (!start) start = ts;
+        const t = ((ts - start) % dur) / dur;
+        const factor = 0.15 + Math.sin(t * Math.PI) * 0.85;
+        const strength = maxStrength * factor;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const alpha = 1 / (steps + 1);
+        for (let i = -steps / 2; i <= steps / 2; i++) {
+          const offset = (i / (steps / 2)) * strength;
+          ctx.globalAlpha = alpha;
+          ctx.drawImage(img, offset, offset, canvas.width, canvas.height);
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+
+      if (img.complete) requestAnimationFrame(draw);
+      else img.addEventListener('load', () => requestAnimationFrame(draw));
+    })();
+  </script>
+</body>
+</html>
