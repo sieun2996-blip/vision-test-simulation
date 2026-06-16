@@ -552,7 +552,7 @@
       noiseGain.gain.value = 0.018;
 
       const masterGain = ctx.createGain();
-      masterGain.gain.value = 1;
+      masterGain.gain.value = 0.5;
 
       hum.connect(humGain);   humGain.connect(masterGain);
       hum2.connect(hum2Gain); hum2Gain.connect(masterGain);
@@ -852,6 +852,14 @@
     let isFalling = false;
     let selectedImgs = [];
 
+    function playIntroSfx() {
+      const introSfx = new Audio('검안 시뮬레이션 이미지/Sound_effect_of_a_vi_%233-1781456270814.mp3');
+      introSfx.volume = 0.6;
+      introSfx.play().catch(() => {});
+    }
+    playIntroSfx();
+    const introSfxTimer = setInterval(playIntroSfx, 6000);
+
     heroImage.addEventListener('click', () => {
       if (isFalling) return;
       startElectricSign();
@@ -881,6 +889,9 @@
         });
       } else {
         isFalling = true;
+        const fallSfx = new Audio('검안 시뮬레이션 이미지/Sound_effect_of_roun_%233-1781456361632.mp3');
+        fallSfx.volume = 0.7;
+        fallSfx.play().catch(() => {});
         allImgs.forEach(img => {
           img.classList.remove('hanging', 'shaking');
           img.style.animationDelay = '';
@@ -900,6 +911,7 @@
 
     document.querySelector('.btn-enter').addEventListener('click', () => {
       stopElectricSign();
+      clearInterval(introSfxTimer);
       playEntryBell();
       document.querySelector('.btn-enter').classList.remove('visible');
       document.querySelectorAll('.hero-image img').forEach(img => {
