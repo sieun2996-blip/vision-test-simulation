@@ -526,6 +526,14 @@
   animation: hintEmphasis 0.65s ease forwards;
 }
 
+@keyframes toolGlow {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0)); }
+  50%      { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95)); }
+}
+.tool-highlight {
+  animation: toolGlow 1.6s ease-in-out infinite;
+}
+
 .q1-drawer {
   position: absolute;
   left: 301px;
